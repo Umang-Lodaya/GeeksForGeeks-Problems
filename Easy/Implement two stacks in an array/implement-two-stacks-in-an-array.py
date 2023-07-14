@@ -6,32 +6,30 @@ class TwoStacks:
         self.arr = [0] * n
         self.top1 = -1
         self.top2 = n
-        self.stack1 = []
-        self.stack2 = []
 
     # Function to push an integer into stack 1
     def push1(self, x):
-        self.stack1.append(x)
+        self.top1 += 1
+        self.arr[self.top1] = x
 
     # Function to push an integer into stack 2
     def push2(self, x):
-        self.stack2.append(x)
+        self.top2 -= 1
+        self.arr[self.top2] = x
 
     # Function to remove an element from top of stack 1
     def pop1(self):
-        if len(self.stack1) > 0:
-            x = self.stack1.pop(-1)
-            return x
-        else:
-            return -1
+        if self.top1 == -1: return -1
+        x = self.arr[self.top1]
+        self.top1 -= 1
+        return x
 
     # Function to remove an element from top of stack 2
     def pop2(self):
-        if len(self.stack2) > 0:
-            x = self.stack2.pop(-1)
-            return x
-        else:
-            return -1
+        if self.top2 == len(self.arr): return -1
+        x = self.arr[self.top2]
+        self.top2 += 1
+        return x
 
 
 #{ 
