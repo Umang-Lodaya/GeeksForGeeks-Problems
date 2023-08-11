@@ -2,15 +2,23 @@
 
 class Solution:
     def count(self, coins, N, Sum):
-        dp = [0]*(Sum + 1)
-        dp[0] = 1
+        dp = [[0 for j in range(Sum + 1)] for i in range(N)]
         
-        for j in range(N):
-            for i in range(1, Sum+1):
-                if i >= coins[j]:
-                    dp[i] += dp[i - coins[j]]
+        for j in range(Sum + 1):
+            if j % coins[0] == 0:
+                dp[0][j] = 1
+        
+        for i in range(1, N):
+            for j in range(Sum + 1):
+                NT = dp[i-1][j]
+                T = 0
+                if j >= coins[i]:
+                    T = dp[i][j - coins[i]]
                 
-        return dp[Sum]
+                dp[i][j] = NT + T
+        
+        return dp[N - 1][Sum]
+
 
 
 #{ 
