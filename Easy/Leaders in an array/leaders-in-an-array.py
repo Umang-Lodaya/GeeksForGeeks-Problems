@@ -3,13 +3,17 @@ class Solution:
     
     #Function to find the leaders in the array.
     def leaders(self, A, N):
-        curr = -float('inf')
         ans = []
-        for i in A[::-1]:
-            curr = max(curr, i)
-            if i == curr:
-                ans.append(i)
-    
+        maxx = -float('inf')
+        for i in range(N - 1, -1, -1):
+            if ans == []:
+                ans.append(A[i])
+                maxx = A[i]
+            else:
+                if maxx <= A[i]:
+                    ans.append(A[i])
+                    maxx = A[i]
+        
         return ans[::-1]
 
 
