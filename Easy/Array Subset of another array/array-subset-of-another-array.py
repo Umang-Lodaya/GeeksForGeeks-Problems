@@ -1,19 +1,11 @@
 #User function Template for python3
-
 def isSubset( a1, a2, n, m):
-    freq = {}
-    for i in a1:
-        if i not in freq:
-            freq[i] = 0
-        freq[i] += 1
-    
-    for i in a2:
-        if i not in freq or freq[i] == 0:
-            return "No"
-        freq[i] -= 1
-    
-    return "Yes"
+    s1 = set(a1)
+    s2 = set(a2)
 
+    if all(a1.count(x) >= a2.count(x) for x in s2):
+        return "Yes"
+    return "No"
 
 #{ 
  # Driver Code Starts
