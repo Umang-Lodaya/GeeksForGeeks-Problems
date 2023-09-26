@@ -2,40 +2,42 @@
 
 # arr[] : int input array of integers
 # k : the quadruple sum required
+
 class Solution:
-    def fourSum(self, arr, target):
-            ans = []
-            n = len(arr)
-            arr.sort()                  #Sorting takes O(NlogN)
+    def fourSum(self, arr, k):
+        arr.sort()
+        n = len(arr)
+        res = []
+        for i in range(n - 3):
+            if i > 0 and arr[i] == arr[i - 1]:
+                continue
             
-            for i in range(n):                # pointer 1 ~O(N)
-                if i > 0 and arr[i] == arr[i-1]:
+            for j in range(i + 1, n - 2):
+                if j > i + 1 and arr[j] == arr[j - 1]:
                     continue
-                for j in range(i+1, n):      # pointer 2 ~ O(N)
-                    if j > i+1 and arr[j] == arr[j-1]:
-                        continue
-    
-                    k = j+1
-                    l = n-1
+                
+                l = j + 1
+                r = n - 1
+                while l < r:
+                    if arr[i] + arr[j] + arr[l] + arr[r] == k:
+                        res.append([arr[i], arr[j], arr[l], arr[r]])
+                        while l < r and arr[l] == arr[l + 1]:
+                            l += 1
+                        l += 1
+                        
+                        while l < r and arr[r] == arr[r - 1]:
+                            r -= 1
+                        r -= 1
                     
-                    while k < l:               # This is ~O(N)
-                        Sum = arr[i] + arr[j] + arr[k] + arr[l]
-                        if Sum == target:
-                            temp = [arr[i],arr[j],arr[k],arr[l]]
-                            ans.append(temp)
-                            k += 1
-                            l -= 1
-                            while k < l and arr[k] == arr[k-1]:
-                                k += 1
-                            while k < l and arr[l] == arr[l+1]:
-                                l -= 1
-                        elif Sum < target:   k += 1
-                        else:   l -= 1
-    
-            return ans
-        
-        
+                    elif arr[i] + arr[j] + arr[l] + arr[r] < k:
+                        l += 1
                     
+                    else:
+                        r -= 1
+                        
+        return sorted(res)
+        
+
 
 #{ 
  # Driver Code Starts
