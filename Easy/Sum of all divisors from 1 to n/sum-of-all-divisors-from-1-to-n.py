@@ -1,13 +1,11 @@
 #User function Template for python3
-
-
 class Solution:
     def sumOfDivisors(self, N):
-    	s = 0
-    	for i in range(1, N+1):
-    	    s += i*(N//i)
-    	
-    	return s
+    	ss = 0
+    	for i in range(1, N + 1):
+    	    ss += i * (N // i)
+    	    
+    	return ss
 
 
 #{ 
