@@ -1,13 +1,13 @@
 #User function Template for python3
 
 class Solution:
-   def check(self,num):
+   def check(self, num):
        if (num) % 8 == 0:
            return 1
        else:
            return -1
                
-   def DivisibleByEight(self,S):
+   def DivisibleByEight(self, S):
        if len(S) < 4:
            return self.check(int(S))
        else:
