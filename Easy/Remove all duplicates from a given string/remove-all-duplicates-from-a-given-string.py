@@ -1,14 +1,13 @@
 #User function Template for python3
 class Solution:
-
-	
-	def removeDuplicates(self,s):
-	    ans = ""
-	    for i in s:
-	        if i not in ans:
-	            ans += i
-	   
-	    return ans
+	def removeDuplicates(self, string):
+	    res = ""
+	    for char in string:
+	        if char not in res:
+	            res += char
+	    
+	    return res
+	    
 
 #{ 
  # Driver Code Starts
